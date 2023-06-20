@@ -14,14 +14,14 @@ C compiler (e.g., GCC)
 Clone the repository:
 
 ```
-git clone https://github.com/your-username/ByteShell.git
+git clone https://github.com/dalaixlmao/ByteShell.git
 ```
 
 Compile the source code:
 
 ```
 cd ByteShell
-gcc -o byteshell byteshell.c
+gcc -o byteshell shell.c
 ```
 
 Run the shell:
