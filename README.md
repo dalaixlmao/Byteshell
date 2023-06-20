@@ -1,2 +1,39 @@
-# Byteshell
-ByteShell is a lightweight C-based shell offering a simple command-line interface. Execute commands, utilize built-in functionalities like cd, alias, help, echo, printf, readarray, and view command history. A minimalistic yet functional shell for learning and building upon.
+# ByteShell
+ByteShell is a simple shell implementation written in C language. It provides a basic command-line interface where users can enter commands, execute built-in commands, and view command history.
+
+## Features
+Command execution: Execute commands entered by the user.
+Built-in commands: Supports a set of built-in commands such as **cd, alias, help, echo, printf, readarray,** etc.
+Command history: Stores a history of executed commands and provides the history command to view the command history.
+Basic shell loop: Provides a continuous shell loop where users can enter commands repeatedly until they choose to exit.
+
+## Getting Started
+### Prerequisites
+C compiler (e.g., GCC)
+### Building and Running
+Clone the repository:
+
+```
+git clone https://github.com/your-username/ByteShell.git
+```
+
+Compile the source code:
+
+```
+cd ByteShell
+gcc -o byteshell byteshell.c
+```
+
+Run the shell:
+
+```
+./byteshell
+```
+
+## Usage
+ 1.) Enter commands at the prompt and press Enter to execute them.
+ 2.) Use built-in commands such as cd, alias, help, echo, printf, readarray and history.
+ 3.) Enter history to view the command history.
+
+## Contributing
+Contributions are welcome! If you have any suggestions, bug reports, or feature requests, please open an issue or submit a pull request.
