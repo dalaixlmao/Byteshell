@@ -7,7 +7,7 @@
 #define MAX_NUM_ARGS 64
 #define MAX_HISTORY_SIZE 100
 
-// Global variables
+
 char* history[MAX_HISTORY_SIZE];
 int history_count = 0;
 
@@ -17,11 +17,11 @@ typedef struct HistoryNode {
     struct HistoryNode* next;
 } HistoryNode;
 
-// Global variables
+
 HistoryNode* history_head = NULL;
 
 
-// Function declarations
+
 char* read_line();
 char** split_line(char* line);
 int execute(char** args);
@@ -34,11 +34,11 @@ int cmd_echo(char** args);
 int cmd_printf(char** args);
 int cmd_readarray(char** args);
 
-// Built-in commands
-int cd(char** args);
-// Implement other built-in commands similarly
 
-// Array of built-in commands
+int cd(char** args);
+
+
+
 char* builtin_commands[] = {
     "cd",
     "alias",
@@ -158,7 +158,7 @@ void add_to_history(char* line) {
     }
 }
 
-// Print command history
+
 // Print command history
 int print_history() {
     HistoryNode* current = history_head;
