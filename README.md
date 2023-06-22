@@ -38,8 +38,11 @@ Run the shell:
 ### Note:- Please, Make sure to run all commands first (mentioned above) in your bash/shell, before starting the Byteshell.
 
 ## Usage
+
  1.) Enter commands at the prompt and press Enter to execute them.
+ 
  2.) Use built-in commands such as cd, alias, help, echo, printf, readarray and history.
+ 
  3.) Enter history to view the command history.
 
 ## Contributing
