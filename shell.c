@@ -47,10 +47,8 @@ char* builtin_commands[] = {
     "printf",
     "readarray",
     "history"
-    // Add more built-in command names here
 };
 
-// Array of corresponding function pointers for built-in commands
 int (*builtin_functions[])(char**) = {
     &cd,
     &cmd_alias,
@@ -60,10 +58,8 @@ int (*builtin_functions[])(char**) = {
     &cmd_readarray,
     &print_history
 
-    // Add more built-in command functions here
 };
 
-// Main shell loop
 void loop() {
     char* line;
     char** args;
@@ -81,12 +77,10 @@ void loop() {
     } while (status);
 }
 
-// Read a line of input from the user
 char* read_line() {
     char* line = malloc(MAX_COMMAND_LENGTH);
     fgets(line, MAX_COMMAND_LENGTH, stdin);
 
-    // Remove newline character at the end, if present
     int len = strlen(line);
     if (len > 0 && line[len - 1] == '\n')
         line[len - 1] = '\0';
@@ -94,7 +88,6 @@ char* read_line() {
     return line;
 }
 
-// Split the command line into arguments
 char** split_line(char* line) {
     char** args = malloc(MAX_NUM_ARGS * sizeof(char*));
     char* token;
@@ -111,13 +104,11 @@ char** split_line(char* line) {
     return args;
 }
 
-// Execute the command
 int execute(char** args) {
     if (args[0] == NULL) {
-        return 1;  // Empty command, continue shell loop
+        return 1; 
     }
 
-    // Check if the command is a built-in command
     if (is_builtin(args[0])) {
         int index = 0;
         while (strcmp(args[0], builtin_commands[index]) != 0) {
@@ -127,11 +118,10 @@ int execute(char** args) {
     }
 
     printf("Command not found: %s\n", args[0]);
-    return 1;  // Continue shell loop
+    return 1; 
 }
 
 
-// Check if the command is a built-in command
 int is_builtin(char* command) {
     int i;
     for (i = 0; i < sizeof(builtin_commands) / sizeof(char*); i++) {
@@ -141,7 +131,6 @@ int is_builtin(char* command) {
     return 0;
 }
 
-// Add command to history
 void add_to_history(char* line) {
     HistoryNode* new_node = (HistoryNode*)malloc(sizeof(HistoryNode));
     new_node->command = strdup(line);
@@ -159,7 +148,6 @@ void add_to_history(char* line) {
 }
 
 
-// Print command history
 int print_history() {
     HistoryNode* current = history_head;
     int count = 1;
@@ -173,7 +161,6 @@ int print_history() {
     return 1;
 }
 
-// Free the history linked list
 void free_history() {
     HistoryNode* current = history_head;
     while (current != NULL) {
@@ -184,19 +171,15 @@ void free_history() {
     }
 }
 
-// Alias command
 int cmd_alias(char** args) {
     if (args[1] == NULL || args[2] == NULL) {
         fprintf(stderr, "alias: missing arguments\n");
     } else {
-        // Store the alias in some data structure or perform necessary operations
-        // Here, we will simply print the alias for demonstration purposes
         printf("Alias: %s = %s\n", args[1], args[2]);
     }
-    return 1;  // Continue shell loop
+    return 1;
 }
 
-// Help command
 int cmd_help(char** args) {
     printf("ByteShell\n");
     printf("A simple shell implementation\n");
@@ -204,31 +187,27 @@ int cmd_help(char** args) {
     for (int i = 0; i < sizeof(builtin_commands) / sizeof(char*); i++) {
         printf("- %s\n", builtin_commands[i]);
     }
-    return 1;  // Continue shell loop
+    return 1; 
 }
 
-// Echo command
 int cmd_echo(char** args) {
     for (int i = 1; args[i] != NULL; i++) {
         printf("%s ", args[i]);
     }
     printf("\n");
-    return 1;  // Continue shell loop
+    return 1; 
 }
 
-// Printf command
 int cmd_printf(char** args) {
-    // Concatenate the arguments to form the format string
     char format_string[MAX_COMMAND_LENGTH] = "";
     for (int i = 1; args[i] != NULL; i++) {
         strcat(format_string, args[i]);
         strcat(format_string, " ");
     }
     printf(format_string);
-    return 1;  // Continue shell loop
+    return 1; 
 }
 
-// Readarray command
 int cmd_readarray(char** args) {
     printf("Enter values (press Ctrl+D to finish):\n");
 
@@ -236,21 +215,17 @@ int cmd_readarray(char** args) {
     size_t line_length = 0;
     size_t read;
 
-    // Read lines from user input until Ctrl+D is pressed
     while ((read = getline(&line, &line_length, stdin)) != -1) {
-        // Remove newline character at the end, if present
         if (line[read - 1] == '\n')
             line[read - 1] = '\0';
         printf("Read: %s\n", line);
     }
 
     free(line);
-    return 1;  // Continue shell loop
+    return 1; 
 }
 
-// Implementation of built-in commands
 
-// Change directory
 int cd(char** args) {
     if (args[1] == NULL) {
         fprintf(stderr, "cd: missing directory\n");
@@ -259,7 +234,7 @@ int cd(char** args) {
             perror("cd");
         }
     }
-    return 1;  // Continue shell loop
+    return 1;
 }
 
 int main() {
